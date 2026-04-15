@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>정성 — 사업계획서</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8CC7A;
+    --deep: #1A1A2E;
+    --charcoal: #2C2C3E;
+    --warm: #F5F0E8;
+    --sage: #7B9E87;
+    --sage-light: #A8C5B0;
+    --cream: #FAF7F2;
+    --text: #2C2830;
+    --text-muted: #6B6475;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--deep);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 40px;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 20% 80%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 20%, rgba(123,158,135,0.10) 0%, transparent 55%);
+  }
+
+  .cover-grain {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* ── LOGO SVG ── */
+  .logo-wrap {
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 1s ease both;
+  }
+
+  .logo-svg {
+    width: 180px;
+    height: 180px;
+    display: block;
+    margin: 0 auto 32px;
+    filter: drop-shadow(0 8px 32px rgba(201,168,76,0.25));
+  }
+
+  .brand-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    letter-spacing: -0.02em;
+    text-align: center;
+    line-height: 1.1;
+    animation: fadeUp 1s 0.2s ease both;
+    opacity: 0;
+  }
+
+  .brand-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--sage-light);
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 0.08em;
+    animation: fadeUp 1s 0.35s ease both;
+    opacity: 0;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 40px auto;
+    animation: fadeUp 1s 0.5s ease both;
+    opacity: 0;
+  }
+
+  .cover-tagline {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 300;
+    animation: fadeUp 1s 0.6s ease both;
+    opacity: 0;
+  }
+
+  .cover-meta {
+    position: absolute;
+    bottom: 48px;
+    right: 60px;
+    text-align: right;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.78rem;
+    line-height: 1.8;
+    font-weight: 300;
+    animation: fadeUp 1s 0.8s ease both;
+    opacity: 0;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.25);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    animation: fadeUp 1s 1s ease both, bounce 2s 2s ease-in-out infinite;
+    opacity: 0;
+  }
+  .scroll-hint svg { opacity: 0.4; }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 0;
+    position: relative;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.5;
+  }
+
+  h2 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--deep);
+    margin-bottom: 32px;
+  }
+
+  p {
+    font-size: 1.02rem;
+    line-height: 1.9;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  /* ── WHY NOW ── */
+  .why-now {
+    background: var(--deep);
+    color: white;
+  }
+  .why-now h2 { color: var(--gold-light); }
+  .why-now p { color: rgba(255,255,255,0.65); }
+  .why-now .section-label { color: var(--sage-light); }
+  .why-now .section-label::after { background: var(--sage-light); }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 56px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    padding: 40px 32px;
+    border: 1px solid rgba(201,168,76,0.15);
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .stat-card:hover { background: rgba(255,255,255,0.07); }
+  .stat-card:hover::before { opacity: 1; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-label {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+
+  /* ── VISION ── */
+  .vision { background: var(--warm); }
+
+  .vision-box {
+    background: var(--deep);
+    padding: 64px;
+    margin-top: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .vision-box::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 18rem;
+    color: var(--gold);
+    opacity: 0.06;
+    position: absolute;
+    top: -60px; left: 20px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .vision-text {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: white;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+  .vision-text em {
+    color: var(--gold-light);
+    font-style: normal;
+  }
+
+  /* ── BUSINESS AREAS ── */
+  .business { background: var(--cream); }
+
+  .biz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .biz-card {
+    background: white;
+    padding: 40px;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .biz-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+  }
+
+  .biz-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    color: var(--sage);
+  }
+
+  .biz-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 12px;
+  }
+
+  .biz-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .biz-badge {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 4px 12px;
+    background: rgba(123,158,135,0.12);
+    color: var(--sage);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    border-radius: 2px;
+  }
+
+  /* ── ROADMAP ── */
+  .roadmap { background: var(--deep); }
+  .roadmap h2 { color: var(--gold-light); }
+  .roadmap .section-label { color: var(--sage-light); }
+  .roadmap .section-label::after { background: var(--sage-light); }
+
+  .timeline {
+    margin-top: 56px;
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), var(--sage), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 56px 40px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 6px;
+    width: 11px;
+    height: 11px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+  }
+
+  .tl-year {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+
+  .tl-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .tl-desc {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ── VALUES ── */
+  .values { background: var(--warm); }
+
+  .val-list {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .val-item {
+    text-align: center;
+    padding: 40px 24px;
+    background: white;
+    border-top: 2px solid var(--gold);
+  }
+
+  .val-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: rgba(201,168,76,0.25);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .val-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 12px;
+  }
+
+  .val-desc {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    padding: 60px 48px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 24px;
+    opacity: 0.7;
+  }
+
+  .footer-text {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+    margin: 0;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .biz-grid { grid-template-columns: 1fr; }
+    .val-list { grid-template-columns: 1fr; }
+    h2 { font-size: 1.8rem; }
+    .brand-name { font-size: 2rem; }
+    .vision-box { padding: 40px 32px; }
+    .vision-text { font-size: 1.2rem; }
+    .container { padding: 0 28px; }
+    .cover-meta { position: static; text-align: center; margin-top: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ COVER ══════════════════════════════ -->
+<div class="cover">
+  <div class="cover-grain"></div>
+
+  <div class="logo-wrap">
+    <!-- LOGO SVG -->
+    <svg class="logo-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#E8CC7A"/>
+          <stop offset="100%" stop-color="#C9A84C"/>
+        </linearGradient>
+        <linearGradient id="sageGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#A8C5B0"/>
+          <stop offset="100%" stop-color="#7B9E87"/>
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+
+      <!-- Outer ring -->
+      <circle cx="90" cy="90" r="82" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.5"/>
+      <!-- Inner ring -->
+      <circle cx="90" cy="90" r="72" fill="none" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.3"/>
+
+      <!-- Heart / hands shape — two curved arms embracing -->
+      <!-- Left arm (caregiver) -->
+      <path d="M55 110 C45 95, 42 75, 58 65 C68 58, 78 62, 82 72" 
+            fill="none" stroke="url(#sageGrad)" stroke-width="5" stroke-linecap="round"/>
+      <!-- Right arm -->
+      <path d="M125 110 C135 95, 138 75, 122 65 C112 58, 102 62, 98 72" 
+            fill="none" stroke="url(#goldGrad)" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- Figure (elder silhouette) -->
+      <!-- Head -->
+      <circle cx="90" cy="58" r="11" fill="url(#goldGrad)" filter="url(#glow)" opacity="0.9"/>
+      <!-- Body -->
+      <path d="M80 70 Q90 68 100 70 L105 100 Q90 106 75 100 Z" fill="url(#goldGrad)" opacity="0.75"/>
+      <!-- Cane -->
+      <line x1="104" y1="90" x2="116" y2="118" stroke="url(#goldGrad)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+      <line x1="112" y1="117" x2="120" y2="118" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+
+      <!-- Leaf / growth symbol top -->
+      <path d="M90 30 C88 22, 80 18, 80 18 C80 18, 88 16, 90 10 C92 16, 100 18, 100 18 C100 18, 92 22, 90 30Z" 
+            fill="url(#sageGrad)" opacity="0.85"/>
+      <line x1="90" y1="30" x2="90" y2="46" stroke="url(#sageGrad)" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- Bottom text arc placeholder dots -->
+      <circle cx="62" cy="148" r="1.5" fill="url(#goldGrad)" opacity="0.4"/>
+      <circle cx="90" cy="155" r="1.5" fill="url(#goldGrad)" opacity="0.4"/>
+      <circle cx="118" cy="148" r="1.5" fill="url(#goldGrad)" opacity="0.4"/>
+
+      <!-- Brand initials -->
+      <text x="90" y="145" text-anchor="middle" font-family="'Noto Serif KR', serif" 
+            font-size="10" font-weight="700" fill="url(#goldGrad)" letter-spacing="6" opacity="0.7">SCP</text>
+    </svg>
+
+    <div class="brand-name" style="opacity:0">정성</div>
+    <div class="brand-sub" style="opacity:0; font-family:'Noto Sans KR',sans-serif; font-style:normal; font-size:0.95rem; letter-spacing:0.2em; color:rgba(232,204,122,0.7);">실버케어파트너스 · Silver Care Partners</div>
+    <div class="cover-divider" style="opacity:0"></div>
+    <div class="cover-tagline" style="opacity:0">노인 복지와 성장의 새로운 기준</div>
+  </div>
+
+  <div class="cover-meta" style="opacity:0">
+    사업계획서 초안<br>
+    2026 · 대한민국
+  </div>
+
+  <div class="scroll-hint" style="opacity:0">
+    스크롤
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+      <path d="M8 0v20M1 13l7 7 7-7" stroke="white" stroke-width="1.5"/>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════ WHY NOW ══════════════════════════════ -->
+<section class="why-now">
+  <div class="container">
+    <div class="section-label reveal">시장 배경</div>
+    <h2 class="reveal">왜 지금, 노인 산업인가</h2>
+    <p class="reveal" style="color:rgba(255,255,255,0.6)">
+      대한민국은 2025년 초고령사회에 공식 진입했습니다. 65세 이상 인구가 전체의 20%를 넘어섰고,
+      이 비율은 2050년까지 40%에 달할 전망입니다. 이는 단순한 인구 통계 변화가 아닌,
+      역사상 가장 거대한 소비 시장의 탄생을 의미합니다.
+    </p>
+    <p class="reveal" style="color:rgba(255,255,255,0.6)">
+      고령층은 더 이상 돌봄의 대상만이 아닙니다. 그들은 경험과 구매력, 그리고 
+      새로운 삶의 질을 원하는 <strong style="color: #E8CC7A">액티브 시니어</strong>입니다.
+    </p>
+
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-num">1,000<span style="font-size:1.8rem">조+</span></div>
+        <div class="stat-label">2030년 국내<br>실버 경제 규모 전망</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">40<span style="font-size:1.8rem">%</span></div>
+        <div class="stat-label">2050년 65세 이상<br>인구 비율 전망</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">5<span style="font-size:1.8rem">배</span></div>
+        <div class="stat-label">향후 10년간 예상되는<br>시니어 서비스 시장 성장</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ VISION ══════════════════════════════ -->
+<section class="vision">
+  <div class="container">
+    <div class="section-label reveal">비전 & 미션</div>
+    <h2 class="reveal">우리가 만들어갈 세상</h2>
+    <p class="reveal">
+      실버케어파트너스는 노인을 단순히 보살핌의 수혜자로 보지 않습니다.
+      우리는 모든 어르신이 자신의 삶을 <strong>주체적으로, 존엄하게, 즐겁게</strong> 영위할 수 있도록
+      돕는 생태계를 구축합니다.
+    </p>
+
+    <div class="vision-box reveal">
+      <div class="vision-text">
+        "나이듦은 인생의 마지막 챕터가 아니라,<br>
+        <em>가장 성숙한 삶의 시작</em>입니다.<br>
+        우리는 그 여정의 가장 신뢰받는 파트너가 됩니다."
+      </div>
+    </div>
+
+    <div style="margin-top:48px; display:grid; grid-template-columns:1fr 1fr; gap:32px;" class="reveal">
+      <div>
+        <div style="font-family:'Noto Serif KR',serif; font-size:1.1rem; font-weight:700; color:var(--deep); margin-bottom:12px;">
+          🎯 미션
+        </div>
+        <p style="font-size:0.95rem;">
+          어르신 한 분 한 분의 삶의 질을 실질적으로 향상시키는 솔루션을 제공하고,
+          가족과 사회가 함께 노인을 지원하는 구조를 만든다.
+        </p>
+      </div>
+      <div>
+        <div style="font-family:'Noto Serif KR',serif; font-size:1.1rem; font-weight:700; color:var(--deep); margin-bottom:12px;">
+          🔭 비전
+        </div>
+        <p style="font-size:0.95rem;">
+          2030년까지 대한민국 시니어 케어 산업을 선도하는 
+          종합 플랫폼으로 성장하여, 동아시아 고령화 사회의
+          표준 모델이 된다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ BUSINESS AREAS ══════════════════════════════ -->
+<section class="business">
+  <div class="container">
+    <div class="section-label reveal">사업 영역</div>
+    <h2 class="reveal">4대 핵심 사업 분야</h2>
+    <p class="reveal">
+      시니어 산업은 단일 서비스가 아닙니다. 우리는 돌봄·건강·여가·기술을 아우르는
+      통합 포트폴리오로 시장을 공략합니다.
+    </p>
+
+    <div class="biz-grid reveal">
+
+      <div class="biz-card">
+        <svg class="biz-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M24 4C24 4 10 14 10 26a14 14 0 0 0 28 0C38 14 24 4 24 4z"/>
+          <path d="M24 20v8M20 24h8" stroke-linecap="round"/>
+        </svg>
+        <div class="biz-title">홈 케어 서비스</div>
+        <p class="biz-desc">어르신이 익숙한 집에서 생활하며 전문 돌봄을 받을 수 있는 재가 케어 서비스. 요양보호사 매칭부터 일상 건강 모니터링까지 통합 제공합니다.</p>
+        <span class="biz-badge">고성장 코어 사업</span>
+      </div>
+
+      <div class="biz-card">
+        <svg class="biz-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="6" y="12" width="36" height="28" rx="3"/>
+          <path d="M16 12V8a8 8 0 0 1 16 0v4"/>
+          <circle cx="24" cy="27" r="5"/>
+        </svg>
+        <div class="biz-title">스마트 헬스케어 테크</div>
+        <p class="biz-desc">IoT 웨어러블 기기와 AI를 활용한 건강 이상 징후 실시간 감지, 만성질환 관리 앱, 비대면 의료 연계 플랫폼을 운영합니다.</p>
+        <span class="biz-badge">기술 차별화</span>
+      </div>
+
+      <div class="biz-card">
+        <svg class="biz-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M8 36l8-12 8 8 8-10 8 6"/>
+          <circle cx="12" cy="14" r="5"/>
+          <circle cx="36" cy="14" r="5"/>
+          <line x1="17" y1="14" x2="31" y2="14"/>
+        </svg>
+        <div class="biz-title">액티브 시니어 플랫폼</div>
+        <p class="biz-desc">건강한 어르신을 위한 여행, 교육, 소셜 커뮤니티, 취미 클래스 등 라이프스타일 큐레이션 플랫폼. 새로운 경험과 사회적 연결을 제공합니다.</p>
+        <span class="biz-badge">신규 블루오션</span>
+      </div>
+
+      <div class="biz-card">
+        <svg class="biz-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 40V20l18-14 18 14v20"/>
+          <rect x="18" y="28" width="12" height="12"/>
+          <path d="M24 20v2"/>
+        </svg>
+        <div class="biz-title">실버타운 & 주거 솔루션</div>
+        <p class="biz-desc">지역 사회와 연계된 커뮤니티형 시니어 주거 공간 개발 및 운영. 독립적 생활과 필요시 케어를 유연하게 결합한 하이브리드 모델입니다.</p>
+        <span class="biz-badge">장기 수익 기반</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ ROADMAP ══════════════════════════════ -->
+<section class="roadmap">
+  <div class="container">
+    <div class="section-label reveal">성장 로드맵</div>
+    <h2 class="reveal">단계별 실행 계획</h2>
+    <p class="reveal" style="color:rgba(255,255,255,0.6)">
+      빠른 검증과 점진적 확장의 전략으로 리스크를 최소화하고 지속 가능한 성장을 추구합니다.
+    </p>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="tl-year">Phase 1 · 2026</div>
+        <div class="tl-title">사업 기반 구축 & 파일럿</div>
+        <p class="tl-desc">법인 설립, 핵심 팀 구성, 홈케어 서비스 1개 지역(강릉·원주) 파일럿 운영. 정부 노인복지 사업 연계 및 초기 고객 100가구 확보 목표.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">Phase 2 · 2027~2028</div>
+        <div class="tl-title">서비스 고도화 & 지역 확장</div>
+        <p class="tl-desc">헬스케어 앱 출시, 강원도 전 지역 → 수도권 진출. 요양보호사 300명 네트워크 구축. 시리즈 A 투자 유치 및 월 매출 5억 목표.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-year">Phase 3 · 2029~2030</div>
+        <div class="tl-title">종합 플랫폼 & 규모화</div>
+        <p class="tl-desc">액티브 시니어 플랫폼 론칭, 커뮤니티 주거 1호점 착공. 전국 서비스망 완성. 연 매출 500억+ 달성 및 IPO 준비.</p>
+      </div>
+      <div class="timeline-item" style="padding-bottom:0">
+        <div class="tl-year">Vision · 2030+</div>
+        <div class="tl-title">동아시아 시니어케어 리더</div>
+        <p class="tl-desc">일본, 싱가포르 등 고령화 선진국 진출. K-실버케어 모델 수출. 사회적 가치와 경제적 성과를 동시에 실현하는 한국 대표 시니어 기업.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ VALUES ══════════════════════════════ -->
+<section class="values">
+  <div class="container">
+    <div class="section-label reveal">핵심 가치</div>
+    <h2 class="reveal">우리가 지키는 세 가지 약속</h2>
+
+    <div class="val-list reveal">
+      <div class="val-item">
+        <div class="val-num">01</div>
+        <div class="val-title">존엄 (Dignity)</div>
+        <p class="val-desc">모든 서비스의 출발점은 어르신의 존엄성 존중입니다. 돌봄이 아닌 동반자의 관계로 접근합니다.</p>
+      </div>
+      <div class="val-item">
+        <div class="val-num">02</div>
+        <div class="val-title">신뢰 (Trust)</div>
+        <p class="val-desc">가족이 맡기고 안심할 수 있는 서비스. 투명한 정보 공유와 검증된 전문 인력으로 신뢰를 쌓습니다.</p>
+      </div>
+      <div class="val-item">
+        <div class="val-num">03</div>
+        <div class="val-title">혁신 (Innovation)</div>
+        <p class="val-desc">기술과 인간적 돌봄의 결합. 끊임없는 개선으로 산업의 기준을 새로 씁니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+<footer>
+  <svg class="footer-logo" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="90" cy="90" r="82" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="90" cy="58" r="11" fill="#C9A84C" opacity="0.7"/>
+    <path d="M80 70 Q90 68 100 70 L105 100 Q90 106 75 100 Z" fill="#C9A84C" opacity="0.5"/>
+    <line x1="104" y1="90" x2="116" y2="118" stroke="#C9A84C" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+    <line x1="112" y1="117" x2="120" y2="118" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+    <path d="M90 30 C88 22, 80 18, 80 18 C80 18, 88 16, 90 10 C92 16, 100 18, 100 18 C100 18, 92 22, 90 30Z" fill="#7B9E87" opacity="0.7"/>
+  </svg>
+  <p class="footer-text">© 2026 정성 · 실버케어파트너스 · Silver Care Partners<br>사업계획서 초안 — 기밀문서</p>
+</footer>
+
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Cover animations (re-trigger opacity for elements set to 0 inline)
+  document.querySelectorAll('.cover [style*="opacity:0"]').forEach((el, i) => {
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    }, 200 + i * 180);
+  });
+</script>
+
+</body>
+</html>
