@@ -1589,7 +1589,7 @@
   <!-- 왼쪽 하단: 사업계획플랜 -->
   <div style="
     position:absolute;
-    left:4%;
+    right:3%;
     bottom:5%;
     z-index:10;
   ">
@@ -2202,63 +2202,122 @@
 
 <!-- ══════ MODAL: 사업계획플랜 ══════ -->
 <div id="modal-license" class="modal-overlay" onclick="closeModalOutside(event,'modal-license')">
-  <div class="modal-box">
+  <div class="modal-box modal-box-wide" style="max-height:90vh; overflow-y:auto;">
     <button class="modal-close" onclick="closeModal('modal-license')">✕</button>
-    <div class="modal-label">공식 서류</div>
-    <h3 class="modal-title">사업자 정보</h3>
+    <div class="modal-label">내부 검토용</div>
+    <div class="modal-title">📋 정성 — 전화 케어 구독 서비스 사업계획</div>
     <div class="modal-divider"></div>
 
-    <div class="license-card">
-      <div class="license-header">
-        <div class="license-stamp">✦</div>
-        <div>
-          <div class="license-title-kr">사업자등록증</div>
-          <div class="license-title-en">Business Registration Certificate</div>
-        </div>
-        <div class="license-logo-small">정성</div>
+    <!-- 한 줄 요약 -->
+    <div style="background:#1A1A2E; padding:24px 28px; border-left:4px solid #C9A84C; margin-bottom:28px;">
+      <p style="font-family:'Noto Serif KR',serif; font-size:1.05rem; color:#E8CC7A; font-weight:600; margin:0; line-height:1.8;">
+        "멀리 사는 자녀의 불안 해소 + 부모님의 정서 케어"를 동시에 해결하는<br>
+        <strong style="color:#fff;">월 구독형 전화 케어 서비스</strong>
+      </p>
+    </div>
+
+    <!-- 서비스 개요 -->
+    <h3 style="font-family:'Noto Serif KR',serif; font-size:1.05rem; font-weight:700; color:#1A1A2E; margin-bottom:14px;">🎯 서비스 개요</h3>
+    <p style="font-size:0.93rem; line-height:1.9; color:#6B6475; margin-bottom:20px;">
+      홀로 사시는 부모님을 <strong>요양보호사 자격 보유 전담 담당자</strong>가 주 2회 정기 전화로 케어합니다.
+      안부 확인·말동무·건강 체크를 매회 진행하고, 매주 <strong>리포트를 자녀에게 전달</strong>합니다.
+      단순 전화가 아니라 "부모 상태를 대신 봐주는 서비스"로 포지셔닝합니다.
+    </p>
+
+    <!-- 가격 구조 -->
+    <h3 style="font-family:'Noto Serif KR',serif; font-size:1.05rem; font-weight:700; color:#1A1A2E; margin-bottom:14px;">💰 추천 가격 구조</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px;">
+      <div style="background:#f8f5ef; padding:22px 20px; border-top:2px solid #C9A84C;">
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.2em; color:#C9A84C; margin-bottom:8px;">안심 케어 (추천)</div>
+        <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#1A1A2E; line-height:1;">89,000<span style="font-size:0.85rem; font-family:'Noto Sans KR',sans-serif;">원/월</span></div>
+        <div style="font-size:0.82rem; color:#6B6475; margin-top:8px; line-height:1.7;">주 2회 정기 전화 케어<br>주간 리포트 카톡 전송<br>담당자 고정<br>이상 징후 즉시 알림</div>
       </div>
-      <div class="license-body">
-        <div class="license-row">
-          <span class="license-key">상호명</span>
-          <span class="license-val">정성 (실버케어파트너스)</span>
-        </div>
-        <div class="license-row">
-          <span class="license-key">대표자</span>
-          <span class="license-val license-highlight">꼬마</span>
-        </div>
-        <div class="license-row">
-          <span class="license-key">사업장 소재지</span>
-          <span class="license-val">구미구미마이구미</span>
-        </div>
-        <div class="license-row">
-          <span class="license-key">업태</span>
-          <span class="license-val">서비스업</span>
-        </div>
-        <div class="license-row">
-          <span class="license-key">종목</span>
-          <span class="license-val">노인 돌봄 및 케어 서비스</span>
-        </div>
-        <div class="license-row">
-          <span class="license-key">사업자등록번호</span>
-          <span class="license-val">000 - 00 - 00000</span>
-        </div>
-        <div class="license-row">
-          <span class="license-key">개업연월일</span>
-          <span class="license-val">2026년</span>
-        </div>
-      </div>
-      <div class="license-footer">
-        <div class="license-seal">
-          <svg viewBox="0 0 80 80" width="80" height="80">
-            <circle cx="40" cy="40" r="36" fill="none" stroke="#C9A84C" stroke-width="2" opacity="0.6"/>
-            <circle cx="40" cy="40" r="28" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
-            <text x="40" y="36" text-anchor="middle" font-size="9" fill="#C9A84C" font-family="serif" opacity="0.8">정성</text>
-            <text x="40" y="48" text-anchor="middle" font-size="6" fill="#C9A84C" font-family="serif" opacity="0.7">JUNGSUNG</text>
-          </svg>
-        </div>
-        <div style="font-size:0.8rem; color:var(--text-muted)">※ 이 문서는 사업계획서용 예시입니다</div>
+      <div style="background:#1A1A2E; padding:22px 20px; border-top:2px solid #7B9E87;">
+        <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.2em; color:#A8C5B0; margin-bottom:8px;">프리미엄 케어</div>
+        <div style="font-family:'Playfair Display',serif; font-size:2rem; font-weight:700; color:#E8CC7A; line-height:1;">129,000<span style="font-size:0.85rem; font-family:'Noto Sans KR',sans-serif; color:#E8CC7A;">원/월</span></div>
+        <div style="font-size:0.82rem; color:rgba(255,255,255,0.6); margin-top:8px; line-height:1.7;">안심 케어 전체 포함<br>월 1회 영상통화<br>치매 초기 체크 질문<br>생일·기념일 챙김</div>
       </div>
     </div>
+
+    <!-- 핵심 가치 -->
+    <h3 style="font-family:'Noto Serif KR',serif; font-size:1.05rem; font-weight:700; color:#1A1A2E; margin-bottom:14px;">⭐ 고객이 돈 내고 싶어지는 핵심 요소</h3>
+    <div style="display:flex; flex-direction:column; gap:0; margin-bottom:24px;">
+      <div style="display:flex; gap:14px; padding:14px 18px; background:#f8f5ef; border-left:3px solid #C9A84C; align-items:flex-start;">
+        <span style="font-size:1.2rem; flex-shrink:0;">📊</span>
+        <div>
+          <div style="font-weight:700; color:#1A1A2E; font-size:0.93rem; margin-bottom:4px;">주간 리포트 (핵심 상품)</div>
+          <div style="font-size:0.83rem; color:#6B6475; line-height:1.7;">대화 요약 · 감정 상태 · 식사/수면/활동 체크 · 이상 징후 포함. 카카오톡으로 전송. 자녀가 "몰랐던 정보"가 있어야 가치 있음</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding:14px 18px; border-left:3px solid #C9A84C; border-top:1px solid #eee; align-items:flex-start;">
+        <span style="font-size:1.2rem; flex-shrink:0;">👩‍⚕️</span>
+        <div>
+          <div style="font-weight:700; color:#1A1A2E; font-size:0.93rem; margin-bottom:4px;">담당자 고정 (신뢰 핵심)</div>
+          <div style="font-size:0.83rem; color:#6B6475; line-height:1.7;">요양보호사 자격 보유자가 전화. 동일 담당자 유지 → 부모님이 익숙해짐 → 해지 안 함. 담당자 프로필 제공으로 신뢰도 UP</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:14px; padding:14px 18px; background:#f8f5ef; border-left:3px solid #C9A84C; border-top:1px solid #eee; align-items:flex-start;">
+        <span style="font-size:1.2rem; flex-shrink:0;">🚨</span>
+        <div>
+          <div style="font-weight:700; color:#1A1A2E; font-size:0.93rem; margin-bottom:4px;">이상 징후 즉시 알림 (차별화)</div>
+          <div style="font-size:0.83rem; color:#6B6475; line-height:1.7;">통화 미응답·말투 이상·건강 변화 → 즉시 자녀에게 문자/카톡 알림. 이것 하나로 가격 정당화 가능</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 수익 구조 -->
+    <h3 style="font-family:'Noto Serif KR',serif; font-size:1.05rem; font-weight:700; color:#1A1A2E; margin-bottom:14px;">📈 현실적 수익 구조 (고객 100명 기준)</h3>
+    <div style="background:#1A1A2E; padding:24px 28px; margin-bottom:24px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center; margin-bottom:20px;">
+        <div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; margin-bottom:6px;">월 매출</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.6rem; color:#E8CC7A;">990만원</div>
+        </div>
+        <div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; margin-bottom:6px;">총 비용</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.6rem; color:#A8C5B0;">530만원</div>
+        </div>
+        <div>
+          <div style="font-size:0.75rem; color:rgba(255,255,255,0.5); letter-spacing:0.1em; margin-bottom:6px;">순이익</div>
+          <div style="font-family:'Playfair Display',serif; font-size:1.6rem; color:#fff; font-weight:700;">460만원</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:16px; font-size:0.82rem; color:rgba(255,255,255,0.5); line-height:2;">
+        비용 상세: 인건비 350만원 (담당자 1인 30~40명 관리) · 마케팅 100만원 · 운영비 80만원<br>
+        <span style="color:#E8CC7A;">※ GPT 계산(순익 660만원)보다 보수적 추정 — 인건비·고객획득비용 현실 반영</span>
+      </div>
+    </div>
+
+    <!-- 보완 방향 -->
+    <h3 style="font-family:'Noto Serif KR',serif; font-size:1.05rem; font-weight:700; color:#1A1A2E; margin-bottom:14px;">🔧 반드시 보완할 사항</h3>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
+      <div style="background:#fff3f3; padding:16px 18px; border-left:3px solid #e57373;">
+        <div style="font-weight:700; font-size:0.88rem; color:#c62828; margin-bottom:6px;">해지율 관리</div>
+        <div style="font-size:0.82rem; color:#6B6475; line-height:1.7;">월 해지율 3~5% 감안. 3개월 약정·장기 할인으로 해지 방어 필수. 해지 전 "한 달 무료 연장" 제안</div>
+      </div>
+      <div style="background:#fff3f3; padding:16px 18px; border-left:3px solid #e57373;">
+        <div style="font-weight:700; font-size:0.88rem; color:#c62828; margin-bottom:6px;">고객 획득 비용</div>
+        <div style="font-size:0.82rem; color:#6B6475; line-height:1.7;">실제 전환 비용 7~15만원. 초기 3~6개월 적자 각오. "첫 달 무료 체험"으로 진입 장벽 낮추기</div>
+      </div>
+      <div style="background:#f0f7f0; padding:16px 18px; border-left:3px solid #66bb6a;">
+        <div style="font-weight:700; font-size:0.88rem; color:#2e7d32; margin-bottom:6px;">마케팅 프레이밍</div>
+        <div style="font-size:0.82rem; color:#6B6475; line-height:1.7;">"부모님께 드리는 선물" 포지셔닝. 명절 마케팅 연계. 카카오 선물하기 형태 검토</div>
+      </div>
+      <div style="background:#f0f7f0; padding:16px 18px; border-left:3px solid #66bb6a;">
+        <div style="font-weight:700; font-size:0.88rem; color:#2e7d32; margin-bottom:6px;">차별화 고도화</div>
+        <div style="font-size:0.82rem; color:#6B6475; line-height:1.7;">감정 변화 그래프 · 부모 행복도 점수 · AI 말투 분석(치매 감지) → 경쟁자 없는 서비스</div>
+      </div>
+    </div>
+
+    <!-- 결론 -->
+    <div style="background:linear-gradient(135deg,#1A1A2E,#0d2318); padding:28px 32px; border-top:2px solid #C9A84C; text-align:center;">
+      <p style="font-family:'Noto Serif KR',serif; font-size:1rem; color:rgba(255,255,255,0.8); line-height:1.9; margin-bottom:6px;">
+        구독형 모델 · 높은 마진 · 고령화 사회 필연적 수요<br>
+        <strong style="color:#E8CC7A; font-size:1.15rem;">충분히 시장성 있는 사업입니다.</strong>
+      </p>
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.4); margin:0;">핵심은 가격보다 "안심감"과 "확실한 관리 느낌"</p>
+    </div>
+
   </div>
 </div>
 
